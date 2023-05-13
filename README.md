@@ -22,4 +22,5 @@
 - https://habr.com/ru/articles/259055/
 
 Список выполненных задач:
-...
+1) Understand the structure of the project (onboarding)...Done.
+2) Removed social networks: vk, yandex....................Done.
