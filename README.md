@@ -24,3 +24,5 @@
 Список выполненных задач:
 1) Understand the structure of the project (onboarding)...Done.
 2) Removed social networks: vk, yandex....................Done.
+3) The compromise-sensitive data has been moved to a separate 
+settings file where data loaded from OS environment variables...Done.
