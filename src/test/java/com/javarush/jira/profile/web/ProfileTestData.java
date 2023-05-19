@@ -1,29 +1,21 @@
 package com.javarush.jira.profile.web;
 
-import com.javarush.jira.MatcherFactory;
-import com.javarush.jira.profile.internal.Contact;
-import com.javarush.jira.profile.internal.Profile;
+import com.javarush.jira.profile.ContactTo;
+import com.javarush.jira.profile.ProfileTo;
 
 import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ProfileTestData {
-    public static final MatcherFactory.Matcher<Profile> PROFILE_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(
-            Profile.class, "lastFailedLogin", "mailNotifications", "contacts");
+    public static final Long USER_ID = 1L;
 
-    public static final Long PROFILE_ID = 1L;
+    public static final Set<String> MAIL_NOTIFICATIONS = Stream.of("assigned", "deadline")
+            .collect(Collectors.toCollection(HashSet::new));
 
-    public static final Profile userProfile = new Profile(PROFILE_ID);
+    public static final Set<ContactTo> CONTACTS = Stream.of(new ContactTo("website", "newUserWebsiteValue"))
+            .collect(Collectors.toCollection(HashSet::new));
 
-    static {
-        //"mailNotifications":["assigned","overdue","deadline"]
-        HashSet<Contact> contacts = new HashSet<>();
-        contacts.add(new Contact(1, "mobile", "+01234567890"));
-        contacts.add(new Contact(1, "skype", "userSkype"));
-        contacts.add(new Contact(1, "website", "user.com"));
-
-        userProfile.setLastLogin(null);
-        userProfile.setLastFailedLogin(null);
-        userProfile.setMailNotifications(49);
-        userProfile.setContacts(contacts);
-    }
+    public static final ProfileTo UPDATED_TO = new ProfileTo(USER_ID, MAIL_NOTIFICATIONS, CONTACTS);
 }
