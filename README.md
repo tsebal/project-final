@@ -30,5 +30,13 @@ Use the variables to the right of the inequality in the application-secret.yaml 
 Add these variables to your OS environment variables. For example:
    key: SPRING_DATASOURCE_USERNAME
    value: admin
-4) ...
-5) Tests are written for all public methods of ProfileRestController...Done.
+4) Tests are written for all public methods of ProfileRestController...Done.
+5) To create a Docker image, run in the console:
+     docker build -t project-final
+   To start the Docker container, run in the console:
+     docker run --name jirarush -p 8080:8080 --env-file docker-env.list project-final
+6) Added automatic calculation of how long the task was in operation and testing.
+   ```
+   Warning! If the main application does not start after Maven command: mvn clean install or mvn clean test
+   - delete all entries in the Activity table.
+   ```

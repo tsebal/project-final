@@ -1,3 +1,4 @@
+DELETE FROM activity;
 DELETE FROM profile;
 DELETE FROM user_role;
 DELETE FROM user_belong;
@@ -96,3 +97,7 @@ INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, st
 INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, startpoint, endpoint) VALUES (5, 4, 2, 2, 'admin', null, null);
 INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, startpoint, endpoint) VALUES (6, 5, 2, 2, 'admin', null, null);
 
+INSERT INTO activity (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE)
+VALUES (1, 2, 3, '2023-05-04 17:09:20', 'in progress'),
+       (2, 2, 3, '2023-05-08 10:31:31', 'ready'),
+       (3, 2, 3, '2023-05-11 11:21:56', 'completed');
