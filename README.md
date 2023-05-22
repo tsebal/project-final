@@ -31,12 +31,15 @@ Add these variables to your OS environment variables. For example:
    key: SPRING_DATASOURCE_USERNAME
    value: admin
 4) Tests are written for all public methods of ProfileRestController...Done.
-5) To create a Docker image, run in the console:
-     docker build -t project-final
+5) To create a Docker image, run from project root directory in the console:
+     docker build -t project-final .
    To start the Docker container, run in the console:
      docker run --name jirarush -p 8080:8080 --env-file docker-env.list project-final
+   Replace the values of the environment variables in the docker-env.list file, if necessary.
 6) Added automatic calculation of how long the task was in operation and testing.
    ```
    Warning! If the main application does not start after Maven command: mvn clean install or mvn clean test
    - delete all entries in the Activity table.
    ```
+7) Added a docker-compose file to run the server container along with the database and nginx. 
+Use the 'docker compose up' command in the root directory of the project from the console to startup.
