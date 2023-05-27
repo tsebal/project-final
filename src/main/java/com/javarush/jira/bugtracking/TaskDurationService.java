@@ -8,9 +8,9 @@ import java.util.Optional;
 
 @Service
 public class TaskDurationService {
-    public static final String STATE_IN_PROGRESS = "in progress";
-    public static final String STATE_READY = "ready";
-    public static final String STATE_COMPLETED = "completed";
+    private static final String STATE_IN_PROGRESS = "in progress";
+    private static final String STATE_READY = "ready";
+    private static final String STATE_COMPLETED = "completed";
 
     private ActivityRepository activityRepository;
 
@@ -21,20 +21,12 @@ public class TaskDurationService {
     public Long getDevelopTimeInSec(Long taskId) {
         Optional<Long> readyStateDuration = activityRepository.getTaskDurationSeconds(taskId, STATE_IN_PROGRESS, STATE_READY);
 
-        if (!readyStateDuration.isPresent()) {
-            throw new NotFoundException("TaskID#" + taskId + " is not found or not ready");
-        }
-
-        return readyStateDuration.get();
+        return readyStateDuration.orElseThrow(() -> new NotFoundException("TaskID#" + taskId + " is not found or not ready"));
     }
 
     public Long getTestTimeInSec(Long taskId) {
         Optional<Long> completedStateDuration = activityRepository.getTaskDurationSeconds(taskId, STATE_READY, STATE_COMPLETED);
 
-        if (!completedStateDuration.isPresent()) {
-            throw new NotFoundException("TaskID#" + taskId + " is not found or not ready");
-        }
-
-        return completedStateDuration.get();
+        return completedStateDuration.orElseThrow(() -> new NotFoundException("TaskID#" + taskId + " is not found or not ready"));
     }
 }
