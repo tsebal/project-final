@@ -21,5 +21,21 @@
 ## Тестирование
 - https://habr.com/ru/articles/259055/
 
-Список выполненных задач:
-...
+## List of completed tasks:
+1) Understand the structure of the project (onboarding)...Done.
+2) Removed social networks: vk, yandex....................Done.
+3) The compromise-sensitive data has been moved to a separate
+settings file where data loaded from OS environment variables...Done.
+Use the variables to the right of the inequality in the application-secret.yaml file with the same names. 
+Add these variables to your OS environment variables. For example:
+   key: SPRING_DATASOURCE_USERNAME
+   value: admin
+4) Tests are written for all public methods of ProfileRestController...Done.
+5) To create a Docker image, run from project root directory in the console:
+     docker build -t project-final .
+   To start the Docker container, run in the console:
+     docker run --name jirarush -p 8080:8080 --env-file docker-env.list project-final
+   Replace the values of the environment variables in the docker-env.list file, if necessary...Done.
+6) Added automatic calculation of how long the task was in operation and testing. With unit tests...Done.
+7) Added a docker-compose file to run the server container along with the database and nginx...Done. 
+Use the 'docker compose up' command in the root directory of the project from the console to startup.
